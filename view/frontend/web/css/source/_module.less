@@ -1,0 +1,17 @@
+& when (@media-common=true) {
+    #country-value {
+        width: 35%;
+        float: left;
+    }
+
+    #phone_number {
+        width: 65%;
+        float: right;
+    }
+
+    .fieldset>.company_type {
+        margin-top: 50px;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__m) {}

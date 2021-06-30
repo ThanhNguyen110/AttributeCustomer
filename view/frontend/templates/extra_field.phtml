@@ -1,0 +1,65 @@
+<?php
+$helper = $this->helper('AHT\AttributeCustomer\Helper\Data');
+$countrycode = $helper->getphonecode();
+?>
+<div class="field phone_number required">
+    <label class="label" for="phone_number">
+        <span><?= $block->escapeHtml(__('Phone number')) ?></span>
+    </label>
+    <div class="control">
+        <select name="phone_code" id="country-value">
+            <?php foreach ($countrycode as $key => $value) : ?>
+                <option value="<?= $value ?>">
+                    <?= $key . " " . "(+$value)" ?>
+                </option>
+            <?php endforeach ?>
+        </select>
+        <input type="number" name="phone_number" id="phone_number" title="<?= $block->escapeHtmlAttr(__('Phone number')) ?>" class="input-text" data-validate="{required:true}" />
+    </div>
+</div>
+<div class="field company_type required">
+    <label class="label" for="company_type">
+        <span><?= $block->escapeHtml(__('Company Type')) ?></span>
+    </label>
+    <div class="control">
+        <select>
+            <option selected>
+                <?= $block->escapeHtml(__('-- Please select your Company Type --')) ?>
+            </option>
+            <option value="manufacturer">
+                <?= $block->escapeHtml(__('CBD Manufacturer')) ?>
+            </option>
+            <option value="brand-and-marketing">
+                <?= $block->escapeHtml(__('CBD Brand and Marketing Company')) ?>
+            </option>
+            <option value="extractor">
+                <?= $block->escapeHtml(__('CBD Extractor')) ?>
+            </option>
+            <option value="other">
+                <?= $block->escapeHtml(__('Other')) ?>
+            </option>
+        </select>
+    </div>
+</div>
+<div class="field organization_name">
+    <label class="label" for="organization_name">
+        <span><?= $block->escapeHtml(__('Organization Name')) ?></span>
+    </label>
+    <div class="control">
+        <input type="text" name="organization_name" id="organization_name" title="<?= $block->escapeHtmlAttr(__('Organization Name')) ?>" class="input-text" data-validate="{required:true}" />
+    </div>
+</div>
+
+<script>
+    require(['jquery'], function($) {
+        $('.organization_name').hide();
+        $('.company_type select').on('change', function() {
+            $('.company_type option:first-child').hide();
+            if ($('.company_type option:selected').val() == 'other') {
+                $('.organization_name').show();
+            } else {
+                $('.organization_name').hide();
+            }
+        });
+    });
+</script>
