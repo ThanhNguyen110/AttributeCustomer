@@ -53,7 +53,7 @@ class AddCompanyAttribute implements DataPatchInterface
             'source' => 'AHT\AttributeCustomer\Model\Source\CompanyTypeDropdown',
             'label' => 'Company Type',
             'required' => true,
-            'default' => false,
+            'default' => '',
             'visible' => true,
             'user_defined' => true,
             'system' => false,
