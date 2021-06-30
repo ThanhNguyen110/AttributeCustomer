@@ -48,8 +48,8 @@ class AddPhoneAttribute implements DataPatchInterface
         $attributeSetId = $customerSetup->getDefaultAttributeSetId($customerEntity->getEntityTypeId());
         $attributeGroup = $customerSetup->getDefaultAttributeGroupId($customerEntity->getEntityTypeId(), $attributeSetId);
         $customerSetup->addAttribute(Customer::ENTITY, 'phone_number', [
-            'type' => 'int',
-            'input' => 'number',
+            'type' => 'varchar',
+            'input' => 'text',
             'label' => 'Phone Number',
             'required' => true,
             'default' => false,

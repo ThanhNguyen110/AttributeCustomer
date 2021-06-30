@@ -7,14 +7,14 @@ $countrycode = $helper->getphonecode();
         <span><?= $block->escapeHtml(__('Phone number')) ?></span>
     </label>
     <div class="control">
-        <select name="phone_code" id="country-value">
+        <select name="phone_code" id="phone_code">
             <?php foreach ($countrycode as $key => $value) : ?>
                 <option value="<?= $value ?>">
                     <?= $key . " " . "(+$value)" ?>
                 </option>
             <?php endforeach ?>
         </select>
-        <input type="number" name="phone_number" id="phone_number" title="<?= $block->escapeHtmlAttr(__('Phone number')) ?>" class="input-text" data-validate="{required:true}" />
+        <input type="text" name="phone_number" id="phone_number" title="<?= $block->escapeHtmlAttr(__('Phone number')) ?>" class="input-text" data-validate="{required:true}" />
     </div>
 </div>
 <div class="field company_type required">
@@ -22,7 +22,7 @@ $countrycode = $helper->getphonecode();
         <span><?= $block->escapeHtml(__('Company Type')) ?></span>
     </label>
     <div class="control">
-        <select>
+        <select name="company_type" value="<?= $block->escapeHtmlAttr($block->getFormData()->getCompanyType()) ?>">
             <option selected>
                 <?= $block->escapeHtml(__('-- Please select your Company Type --')) ?>
             </option>
@@ -46,7 +46,7 @@ $countrycode = $helper->getphonecode();
         <span><?= $block->escapeHtml(__('Organization Name')) ?></span>
     </label>
     <div class="control">
-        <input type="text" name="organization_name" id="organization_name" title="<?= $block->escapeHtmlAttr(__('Organization Name')) ?>" class="input-text" data-validate="{required:true}" />
+        <input type="text" name="organization_name" id="organization_name" title="<?= $block->escapeHtmlAttr(__('Organization Name')) ?>" class="input-text" data-validate="{required:true}" value="<?= $block->escapeHtmlAttr($block->getFormData()->getOrganizationName()) ?>" />
     </div>
 </div>
 
@@ -60,6 +60,10 @@ $countrycode = $helper->getphonecode();
             } else {
                 $('.organization_name').hide();
             }
+        });
+
+        $('#phone_code').on('change', function() {
+            $('#phone_number').val($('#phone_code').val());
         });
     });
 </script>
