@@ -52,7 +52,6 @@ class AddPhoneAttribute implements DataPatchInterface
             'input' => 'text',
             'label' => 'Phone Number',
             'required' => true,
-            'default' => '',
             'visible' => true,
             'user_defined' => true,
             'system' => false,
