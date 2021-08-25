@@ -1,4 +1,5 @@
 <?php
+
 namespace AHT\AttributeCustomer\Model;
 
 class Company extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface
